@@ -1,6 +1,24 @@
 class Movie:
     def __init__(self, title):
-        self.title = title
+        if not isinstance(title, str):
+            raise ValueError("Title must be a string")
+        if len(title) == 0:
+            raise ValueError("Title must be longer than 0 characters")
+        
+        self._title = title
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, new_title):
+        if not isinstance(new_title, str):
+            raise ValueError("Title must be a string")
+        if len(new_title) == 0:
+            raise ValueError("Title must be longer than 0 characters")
+        
+        self._title = new_title
 
     def reviews(self):
         pass
